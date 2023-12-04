@@ -13,8 +13,11 @@ with open(profitLoss_csv) as csvfile:
 
 	csvReader = csv.reader(csvfile, delimiter=",")
 
-	for 
+	for row in csvReader:
+		dates.append(row[0])
+		profitLoss.append(row[1])
 
+		tMonths = len(dates)
 
 
 
@@ -31,10 +34,16 @@ with open(profitLoss_csv) as csvfile:
 
 
 
+	budgetResult = os.path.join("budgetResult.csv")
+
+	with open(budgetResult.csv, "w", firstLine ='') as datafile:
+		writer = csv.writer(str(datafile))
+
+		writer.writerow(tMonths)
 
 
 
-
+print(f"Total Month: " + str(tMonths))
 
 
 
