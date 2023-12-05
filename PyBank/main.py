@@ -16,6 +16,29 @@ res = []
 large = []
 small = []
 
+# -----------------------------------------------------------------------------------------
+
+with open(profitLoss_csv) as csvfile:
+
+	csvReader = csv.reader(csvfile, delimiter=",")
+	csvHeader = next(csvfile)
+
+	for row in csvReader:
+		dates.append(row[0])
+		profitLoss.append(row[1])
+		tMonths = len(dates)
+
+with open(profitLoss_csv, mode='r') as csvfileII:
+	csvReaderII = csv.reader(csvfileII)
+	with open('profitLoss_csv', mode='w') as plOutFile:
+		writer = csv.writer(plOutFile)
+		profitLossDict = {rows[0]:rows[1] for rows in csvReaderII}
+
+print(profitLossDict)
+
+
+
+
 
 # -----------------------------------------------------------------------------------------
 
@@ -31,17 +54,20 @@ def sum_change(string_list):
 		ressum = int(sum(res))
 	return res
 
+# -----------------------------------------------------------------------------------------
+
 def find_largest(dates_list, string_list):
 	numbers = [int(num) for num in (string_list)]
 	for i in range(1, len(numbers)):
 		large.append(numbers[i])
 
 	max = large[0]
+	maxDate = dates_list[0]
 	for i in large:               
 		if i > max:
 			max = i
-			maxDate = dates_list[i - 1]
-	return (max)
+			print(i)
+	return max
 
 def find_smallest(dates_list, string_list):
 	numbers = [int(num) for num in (string_list)]
@@ -56,26 +82,16 @@ def find_smallest(dates_list, string_list):
 	return minDate, min
 
 
-# -----------------------------------------------------------------------------------------
 
 
-with open(profitLoss_csv) as csvfile:
 
-	csvReader = csv.reader(csvfile, delimiter=",")
 
-	csvHeader = next(csvfile)
-	# print(f"Header: {csvHeader}")
+
 
 
 # -----------------------------------------------------------------------------------------
 
 # # Total Months: 86
-	for row in csvReader:
-		dates.append(row[0])
-		profitLoss.append(row[1])
-
-		tMonths = len(dates)
-
 print(f"Total Months: " + str(tMonths))
 
 
@@ -97,7 +113,7 @@ print(f"str(largestNumber)"+ str(dateOf)+ " " + str(largestNumber))
 
 
 # Greatest Decrease in Profits: Feb-14 ($-1825558)
-smallest_Number = find_smallest(res)
+dateOf,  = find_smallest(dates, res)
 print(f"str(smallestNumber)" + str(smallest_Number))
 
 
