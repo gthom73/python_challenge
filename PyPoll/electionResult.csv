@@ -1,0 +1,19 @@
+Election Results
+
+------------------------------------------------------
+
+Total Votes: 369711
+
+------------------------------------------------------
+
+
+Did not get a handle on writing a dictionary to
+a dictionary. Would have liked to write out
+"priint(key, value, format(value/len(ballots), '.2%''))"
+to a new dictionary and then print that dictionary here.
+
+------------------------------------------------------
+
+The Winner is : Diana DeGette
+
+------------------------------------------------------
